@@ -19,6 +19,7 @@ return new class extends Migration
             $table->time('waktu_selesai');
             $table->text('deskripsi');
             $table->string('lokasi');
+            $table->timestamps();
         });
     }
 

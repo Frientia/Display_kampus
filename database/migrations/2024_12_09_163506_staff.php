@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama_staff', 25);
             $table->string('jabatan', 25);
             $table->text('no_telp');
+            $table->timestamps();
         });
     }
 

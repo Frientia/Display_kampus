@@ -59,11 +59,11 @@ return [
     |
     */
 
-    'providers' => [
+        'providers' => [
         'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
+        'driver' => 'eloquent',
+        'model' => App\Models\Akun::class,
+    ],
 
         // 'users' => [
         //     'driver' => 'database',

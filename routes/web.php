@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,4 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::resource('/staff', StaffController::class);

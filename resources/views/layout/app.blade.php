@@ -13,6 +13,7 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <marquee behavior="" direction="">GLOBAL</marquee>
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Global Institute</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +45,7 @@
             <h4>Global Institute</h4>
         </div>
         <ul>
-            <li><i class="fas fa-tachometer-alt"></i> <a href="#">Dashboard</a></li>
+            <li><i class="fas fa-tachometer-alt"></i> <a href="{{route('dashboard')}}">Dashboard</a></li>
             <li>
                 <i class="fas fa-user"></i> Karyawan
                 <ul class="submenu">

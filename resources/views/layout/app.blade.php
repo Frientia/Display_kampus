@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -49,8 +50,9 @@
             <li>
                 <i class="fas fa-user"></i> Karyawan
                 <ul class="submenu">
-                    <li><a href="#">Dosen</a></li>
+                    <li><a href="{{route('dosen.index')}}">Dosen</a></li>
                     <li><a href="{{route('staff.index')}}">Staff</a></li>
+                    <li><a href="{{route('matkul.index')}}">Matkul</a></li>
                 </ul>
             </li>
             <li>
@@ -72,9 +74,19 @@
     <div>
         @yield('content')
     </div>
+    @if(session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Login Berhasil',
+            text: '{{ session('success') }}',
+            showConfirmButton: false,
+            timer: 2000
+        });
+    </script>
+@endif
 
 
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

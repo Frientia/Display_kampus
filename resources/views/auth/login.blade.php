@@ -21,9 +21,9 @@
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" placeholder="Password" required>
                 </div>
-                
+
                 <button type="submit" class="btn-login">Masuk</button>
-                
+
             </form>
         </div>
         <div class="login-image">
@@ -51,7 +51,7 @@
             timer: 2000
         });
         @endif
-      
+
     </script>
 </body>
 </html>

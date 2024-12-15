@@ -20,18 +20,18 @@ class AuthController extends Controller
             'username' => 'required',
             'password' => 'required',
         ]);
-    
+
         // Cari akun berdasarkan username
         $akun = Akun::where('username', $request->username)->first();
-    
+
         if ($akun && Hash::check($request->password, $akun->password)) {
             // Login menggunakan Auth::login() agar Laravel mengenali sesi pengguna
             Auth::login($akun);  // Login pengguna
-    
+
             // Redirect ke dashboard
             return redirect()->route('dashboard')->with('success', 'Selamat datang, Anda berhasil login!');
         }
-    
+
         return back()->withErrors([
             'username' => 'Username atau password salah.',
         ])->onlyInput('username');
@@ -46,5 +46,5 @@ class AuthController extends Controller
     return redirect('/login')->with('warning', 'Logout berhasil! Sampai jumpa lagi.');
 }
 
-    
+
 }

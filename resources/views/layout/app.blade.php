@@ -52,8 +52,10 @@
                 <ul class="submenu">
                     <li><a href="{{route('dosen.index')}}">Dosen</a></li>
                     <li><a href="{{route('staff.index')}}">Staff</a></li>
-                    <li><a href="{{route('matkul.index')}}">Matkul</a></li>
                 </ul>
+            </li>
+            <li>
+                <i class="fas fa-book"><a href="{{route('matkul.index')}}"></i> Matkul
             </li>
             <li>
                 <i class="fas fa-info-circle"></i> Informasi

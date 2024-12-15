@@ -60,7 +60,6 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Id Matkul</th>
                                     <th>Nama Matkul</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -68,19 +67,18 @@
                             <tbody>
                                 @foreach($matkul as $m)
                                 <tr>
-                                    <td>{{$m->id_matkul}}</td>
                                     <td>{{$m->nama_matkul}}</td>
 
-                                    <td>
-                                        <a href="{{ route('matkul.edit', $m->id_matkul) }}" class="btn btn-warning btn-sm">Edit</a>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $m->id_matkul }})">Hapus</button>
-                                        <form id="delete-form-{{ $m->id_matkul }}" action="{{ route('matkul.destroy', $m->id_matkul) }}" method="POST" style="display: none;">
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
-                                    </td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a href="{{ route('matkul.edit', $m->id_matkul) }}" class="btn btn-warning btn-sm" style="margin-right: 5px; width: 60px; text-align: center;">Edit</a>
+                                    <button type="button" class="btn btn-sm btn-danger" style="width: 60px;" onclick="confirmDelete({{ $m->id_matkul }})">Hapus</button>
+                                </div>
+                                <form id="delete-form-{{ $m->id_matkul }}" action="{{ route('matkul.destroy', $m->id_matkul) }}" method="POST" style="display: none;">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                            </td>
                                 </tr>
                                 @endforeach
                             </tbody>

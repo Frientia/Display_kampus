@@ -58,6 +58,7 @@
 
                         <div class="mb-3">
                             <button class="btn btn-danger btn-sm">Simpan</button>
+                            <a href="{{ route('dosen.index') }}" class="btn btn-success btn-sm">Kembali</a>
                         </div>
                     </form>
                 </div>

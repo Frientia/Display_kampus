@@ -73,10 +73,10 @@
                             <td>{{$d->no_telp}}</td>
                             <td>{{$d->nama_matkul}}</td>
                             <td>
-                                <a href="{{ route('dosen.edit', $d->id_dosen) }}" class="btn btn-warning btn-sm">Edit</a>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $d->id_dosen }})">Hapus</button>
+                                <div class="btn-group" role="group">
+                                    <a href="{{ route('dosen.edit', $d->id_dosen) }}" class="btn btn-warning btn-sm" style="margin-right: 5px; width: 60px; text-align: center;">Edit</a>
+                                    <button type="button" class="btn btn-sm btn-danger" style="width: 60px;" onclick="confirmDelete({{ $d->id_dosen }})">Hapus</button>
+                                </div>
                                 <form id="delete-form-{{ $d->id_dosen }}" action="{{ route('dosen.destroy', $d->id_dosen) }}" method="POST" style="display: none;">
                                     @csrf
                                     @method('DELETE')

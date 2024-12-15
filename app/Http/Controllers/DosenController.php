@@ -26,16 +26,25 @@ class DosenController extends Controller
         return view('dosen.create', compact('matkuls'));
     }
 
-    public function store(Request $request):RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
-        //validate form
+        // Validasi form
         $request->validate([
             'id_dosen' => 'required',
             'nama_dosen' => 'required',
             'email' => 'required',
             'no_telp' => 'required|numeric',
-            'id_matkul' => 'required|exists:matkul,id_matkul', // Validasi: harus ada di tabel `matkul`
+            'id_matkul' => 'required|exists:matkul,id_matkul',
         ]);
+
+        // Cek apakah nama mata kuliah sudah ada
+        $existingMatkul = Matkul::where('nama_matkul', $request->input('nama_matkul'))->exists();
+
+        if ($existingMatkul) {
+            return redirect()->back()->withErrors(['nama_matkul' => 'Nama mata kuliah sudah ada.'])->withInput();
+        }
+
+        // Simpan data dosen
         Dosen::create([
             'id_dosen' => $request->id_dosen,
             'nama_dosen' => $request->nama_dosen,
@@ -43,23 +52,38 @@ class DosenController extends Controller
             'no_telp' => $request->no_telp,
             'id_matkul' => $request->id_matkul
         ]);
-        return redirect()->route('dosen.index')->with(['berhasil' => 'Data berhasil disimpan!']);
+
+        return redirect()->route('dosen.index')->with(['berhasil' => 'Data Berhasil Disimpan!']);
     }
 
     public function edit(string $id):View
     {
-        $dosen = Dosen::find($id);
-        return view('dosen.edit', compact('dosen'));
+        $dosen = Dosen::findOrFail($id);
+        $matkuls = Matkul::all();
+        return view('dosen.edit', compact('dosen', 'matkuls'));
     }
-    public function update(Request $request, string $id ):RedirectResponse
+
+    public function update(Request $request, string $id): RedirectResponse
     {
+        // Validasi form
         $request->validate([
             'id_dosen' => 'required',
             'nama_dosen' => 'required',
             'email' => 'required',
             'no_telp' => 'required|numeric',
-            'id_matkul' => 'required',
+            'id_matkul' => 'required|exists:matkul,id_matkul',
         ]);
+
+        // Cek apakah nama mata kuliah sudah ada (selain yang sedang diedit)
+        $existingMatkul = Matkul::where('nama_matkul', $request->input('nama_matkul'))
+            ->where('id_matkul', '!=', $request->input('id_matkul'))
+            ->exists();
+
+        if ($existingMatkul) {
+            return redirect()->back()->withErrors(['nama_matkul' => 'Nama mata kuliah sudah ada.'])->withInput();
+        }
+
+        // Update data dosen
         $dosen = Dosen::findOrFail($id);
         $dosen->update([
             'id_dosen' => $request->id_dosen,
@@ -68,14 +92,16 @@ class DosenController extends Controller
             'no_telp' => $request->no_telp,
             'id_matkul' => $request->id_matkul
         ]);
-        return redirect()->route('dosen.index')->with(['berhasil' => 'Data berhasil diupdate!!']);
+
+        return redirect()->route('dosen.index')->with(['berhasil' => 'Data Berhasil Diupdate!!']);
     }
+
 
     public function destroy(string $id):RedirectResponse
     {
         $dosen = Dosen::findOrFail($id);
         $dosen->delete();
-        return redirect()->route('dosen.index')->with(['berhasil' => 'Data berhasil dihapus']);
+        return redirect()->route('dosen.index')->with(['berhasil' => 'Data Berhasil Dihapus']);
     }
 
 }

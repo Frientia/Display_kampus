@@ -28,13 +28,13 @@ class MatkulController extends Controller
         //validate form
         $request->validate([
             'id_matkul' => 'required',
-            'nama_matkul' => 'required',
+            'nama_matkul' => 'required|unique:matkul,nama_matkul',
         ]);
         Matkul::create([
             'id_matkul' => $request->id_matkul,
             'nama_matkul' => $request->nama_matkul
         ]);
-        return redirect()->route('matkul.index')->with(['berhasil' => 'Data berhasil disimpan!']);
+        return redirect()->route('matkul.index')->with(['berhasil' => 'Data Berhasil Disimpan!']);
     }
 
     public function edit(string $id):View
@@ -46,21 +46,21 @@ class MatkulController extends Controller
     {
         $request->validate([
             'id_matkul' => 'required',
-            'nama_matkul' => 'required',
+            'nama_matkul' => 'required|unique:matkul,nama_matkul,' . $id . ',id_matkul',
         ]);
         $matkul = Matkul::findOrFail($id);
         $matkul->update([
-            'id_matkuk' => $request->id_matkul,
+            'id_matkul' => $request->id_matkul,
             'nama_matkul' => $request->nama_matkul
         ]);
-        return redirect()->route('matkul.index')->with(['berhasil' => 'Data berhasil diupdate!!']);
+        return redirect()->route('matkul.index')->with(['berhasil' => 'Data Berhasil Diupdate!!']);
     }
 
     public function destroy(string $id):RedirectResponse
     {
         $matkul = Matkul::findOrFail($id);
         $matkul->delete();
-        return redirect()->route('matkul.index')->with(['berhasil' => 'Data berhasil dihapus']);
+        return redirect()->route('matkul.index')->with(['berhasil' => 'Data Berhasil Dihapus']);
     }
 
 }

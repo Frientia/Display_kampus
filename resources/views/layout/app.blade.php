@@ -67,7 +67,7 @@
             <li>
                 <i class="fas fa-building"></i> Gedung
                 <ul class="submenu">
-                    <li><a href="#">Kelas</a></li>
+                    <li><a href="{{route('kelas.index')}}">Kelas</a></li>
                     <li><a href="#">Ruangan</a></li>
                 </ul>
             </li>

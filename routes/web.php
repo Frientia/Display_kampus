@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MatkulController;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -29,3 +30,4 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::resource('/staff', StaffController::class);
 Route::resource('/dosen', DosenController::class);
 Route::resource('/matkul', MatkulController::class);
+Route::resource('/kelas', KelasController::class);

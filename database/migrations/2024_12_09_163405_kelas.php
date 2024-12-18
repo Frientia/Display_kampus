@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('kelas', function (Blueprint $table) {
             $table->string('id_kelas', 10)->primary();
             $table->string('nama_kelas', 25);
-            $table->string('id_prodi', 10);
-            $table->foreign('id_prodi')->references('id_prodi')->on('prodi')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('id_konsentrasi', 10);
+            $table->foreign('id_konsentrasi')->references('id_konsentrasi')->on('konsentrasi')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -9,6 +9,7 @@ use App\Http\Controllers\MatkulController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RuanganController;
+use App\Http\Controllers\KonsentrasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,4 @@ Route::resource('/matkul', MatkulController::class);
 Route::resource('/kelas', KelasController::class);
 Route::resource('/ruangan', RuanganController::class);
 Route::resource('/jadwal', JadwalController::class);
+Route::resource('/konsentrasi', KonsentrasiController::class);

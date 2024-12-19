@@ -60,8 +60,8 @@
             <li>
                 <i class="fas fa-info-circle"></i> Informasi
                 <ul class="submenu">
-                    <li><a href="#">Agenda</a></li>
-                    <li><a href="#">Jadwal</a></li>
+                    <li><a href="{{route('agenda.index')}}">Agenda</a></li>
+                    <li><a href="{{route('jadwal.index')}}">Jadwal</a></li>
                 </ul>
             </li>
             <li>

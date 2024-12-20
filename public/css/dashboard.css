@@ -1,0 +1,87 @@
+/* Sidebar Styling */
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #338de7;
+    color: white;
+    padding: 15px 0;
+    overflow-y: auto;
+}
+.sidebar .profile {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.sidebar .profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+.sidebar .profile h4 {
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+.sidebar ul li {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    flex-grow: 1;
+}
+.sidebar ul li i {
+    font-size: 1.2rem;
+}
+.sidebar ul .submenu {
+    list-style-type: none;
+    margin-left: 20px;
+    display: none;
+}
+.sidebar ul li:hover > .submenu {
+    display: block;
+}
+.sidebar ul li:hover {
+    background-color: #495057;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 270px;
+    padding: 20px;
+}
+
+/* Card Styling */
+.card {
+    margin: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.card-body {
+    font-size: 1.1rem;
+}
+
+/* Chart Container */
+.chart-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.navbar-brand {
+    font-weight: bold;
+}

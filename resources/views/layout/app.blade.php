@@ -62,6 +62,7 @@
                 <ul class="submenu">
                     <li><a href="{{route('agenda.index')}}">Agenda</a></li>
                     <li><a href="{{route('jadwal.index')}}">Jadwal</a></li>
+                    <li><a href="{{route('konsentrasi.index')}}">Konsentrasi</a></li>
                 </ul>
             </li>
             <li>

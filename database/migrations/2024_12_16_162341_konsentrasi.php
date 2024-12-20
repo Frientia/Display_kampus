@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kelas', function (Blueprint $table) {
-            $table->string('id_kelas', 10)->primary();
-            $table->string('nama_kelas', 25);
-            $table->string('id_konsentrasi', 10);
-            $table->foreign('id_konsentrasi')->references('id_konsentrasi')->on('konsentrasi')->onUpdate('cascade')->onDelete('cascade');
+        //
+        Schema::create('konsentrasi', function (Blueprint $table) {
+            $table->string('id_konsentrasi', 10)->primary();
+            $table->string('nama_konsentrasi', 25);
             $table->timestamps();
         });
     }
@@ -23,8 +22,11 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
+
+    
     public function down(): void
     {
-        Schema::dropIfExists('kelas');
+        //
+        Schema::dropIfExists('prodi');
     }
 };

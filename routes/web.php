@@ -10,6 +10,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\AgendaHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,11 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
+
+Route::get('/home', function () {
+    return view('home');
+});
+Route::get('/home', [AgendaHomeController::class, 'showDashboard']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::resource('/staff', StaffController::class);

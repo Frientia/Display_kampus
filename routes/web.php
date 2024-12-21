@@ -43,9 +43,6 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/home', function () {
     return view('home');
 });
-Route::get('/home', [AgendaHomeController::class, 'showDashboard']);
+Route::get('/', [AgendaHomeController::class, 'showDashboard']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/utama', function () {
-    return view('utama');
-});

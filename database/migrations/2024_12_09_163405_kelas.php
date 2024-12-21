@@ -15,7 +15,8 @@ return new class extends Migration
             $table->string('id_kelas', 10)->primary();
             $table->string('nama_kelas', 25);
             $table->string('id_konsentrasi', 10);
-            
+            $table->string('id_semester', 10);
+            $table->foreign('id_semester')->references('id_semester')->on('semester')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign('id_konsentrasi')->references('id_konsentrasi')->on('konsentrasi')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

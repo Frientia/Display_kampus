@@ -11,22 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('konsentrasi', function (Blueprint $table) {
-            $table->string('id_konsentrasi', 10)->primary();
-            $table->string('nama_konsentrasi', 25);
-            $table->timestamps();
+        Schema::create('semester', function (Blueprint $table) {
+            $table->string('id_semester' ,10)->primary();
+            $table->string('nama_semester', 25);
         });
     }
 
     /**
      * Reverse the migrations.
      */
-
-    
     public function down(): void
     {
-        //
-        Schema::dropIfExists('prodi');
+        Schema::dropIfExists('semester');
     }
 };

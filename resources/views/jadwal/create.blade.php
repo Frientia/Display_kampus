@@ -23,6 +23,24 @@
                         </div>
 
                         <div class="mb-3">
+                        <label for="hari" class="form-label">Hari</label>
+                        <select name="hari" id="hari" class="form-control @error('hari') is-invalid @enderror">
+                            <option value="">Pilih Hari</option>
+                            <option value="Senin">Senin</option>
+                            <option value="Selasa">Selasa</option>
+                            <option value="Rabu">Rabu</option>
+                            <option value="Kamis">Kamis</option>
+                            <option value="Jumat">Jumat</option>
+                            <option value="Sabtu">Sabtu</option>
+                            <option value="Minggu">Minggu</option>
+                        </select>
+                        @error('hari')
+                            <div class="alert alert-danger mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+
+                        <div class="mb-3">
                             <label for="jam_masuk" class="form-label">Jam Masuk</label>
                             <input type="time" name="jam_masuk" class="form-control @error('jam_masuk') is-invalid @enderror" placeholder="Masukkan Jam Masuk">
                             @error('jam_masuk')

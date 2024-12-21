@@ -34,6 +34,7 @@ class JadwalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'hari' => 'required',
             'tanggal' => 'required|date',
             'jam_masuk' => 'required',
             'jam_selesai' => 'required',
@@ -45,6 +46,7 @@ class JadwalController extends Controller
 
 
         Jadwal::create([
+            'hari' => $request->hari,
             'tanggal' => $request->tanggal,
             'jam_masuk' => $request->jam_masuk,
             'jam_selesai' => $request->jam_selesai,
@@ -72,6 +74,7 @@ class JadwalController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'hari' => 'required',
             'tanggal' => 'required|date',
             'jam_masuk' => 'required',
             'jam_selesai' => 'required',

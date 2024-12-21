@@ -17,6 +17,23 @@
                         @method('PUT')
 
                         <div class="mb-3">
+                            <label for="hari" class="form-label">Hari</label>
+                            <select name="hari" id="hari" class="form-control @error('hari') is-invalid @enderror">
+                                <option value="">Pilih Hari</option>
+                                <option value="Senin" {{ $jadwal->hari == 'Senin' ? 'selected' : '' }}>Senin</option>
+                                <option value="Selasa" {{ $jadwal->hari == 'Selasa' ? 'selected' : '' }}>Selasa</option>
+                                <option value="Rabu" {{ $jadwal->hari == 'Rabu' ? 'selected' : '' }}>Rabu</option>
+                                <option value="Kamis" {{ $jadwal->hari == 'Kamis' ? 'selected' : '' }}>Kamis</option>
+                                <option value="Jumat" {{ $jadwal->hari == 'Jumat' ? 'selected' : '' }}>Jumat</option>
+                                <option value="Sabtu" {{ $jadwal->hari == 'Sabtu' ? 'selected' : '' }}>Sabtu</option>
+                                <option value="Minggu" {{ $jadwal->hari == 'Minggu' ? 'selected' : '' }}>Minggu</option>
+                            </select>
+                            @error('hari')
+                                <div class="alert alert-danger mt-2">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
                             <label for="tanggal" class="form-label">Tanggal</label>
                             <input type="date" name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{ $jadwal->tanggal }}" placeholder="Masukkan Tanggal">
                             @error('tanggal')

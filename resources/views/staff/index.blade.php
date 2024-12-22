@@ -46,6 +46,7 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
+                                    <th>No</th>
                                     <th>Id Staff</th>
                                     <th>Nama</th>
                                     <th>Jabatan</th>
@@ -57,6 +58,7 @@
                             <tbody>
                                 @foreach($staff as $s)
                                 <tr>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{$s->id_staff}}</td>
                                     <td>{{$s->nama_staff}}</td>
                                     <td>{{$s->jabatan}}</td>

@@ -60,6 +60,7 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
+                                    <th>No</th>
                                     <th>Nama Konsentrasi</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -67,7 +68,7 @@
                             <tbody>
                             @foreach($konsentrasi as $k)
                                 <tr>
-                                    
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{$k->nama_konsentrasi}}</td>
                                     
 

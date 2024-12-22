@@ -58,6 +58,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
+                    <th>No</th>
                     <th>Id Jadwal</th>
                     <th>Hari</th>
                     <th>Tanggal</th>
@@ -73,6 +74,7 @@
                 <tbody>
                 @foreach($jadwal as $j)
                     <tr>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $j->id_jadwal }}</td>
                         <td>{{ $j->hari }}</td>
                         <td>{{ $j->tanggal }}</td>

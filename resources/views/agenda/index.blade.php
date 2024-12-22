@@ -66,6 +66,7 @@
                     <table class="table table-striped mb-0">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Id Agenda</th>
                                 <th>Nama Agenda</th>
                                 <th>Tanggal</th>
@@ -79,6 +80,7 @@
                         <tbody>
                             @foreach($agenda as $a)
                                 <tr>
+                                   <td>{{ $loop->iteration }}</td>
                                     <td>{{ $a->id_agenda }}</td>
                                     <td>{{ $a->nama_agenda }}</td>
                                     <td>{{ $a->tanggal }}</td>

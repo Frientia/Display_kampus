@@ -56,6 +56,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Id Dosen</th>
                             <th>Nama Dosen</th>
                             <th>Email</th>
@@ -67,6 +68,7 @@
                     <tbody>
                         @foreach($dosen as $d)
                         <tr>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{$d->id_dosen}}</td>
                             <td>{{$d->nama_dosen}}</td>
                             <td>{{$d->email}}</td>

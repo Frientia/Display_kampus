@@ -9,9 +9,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('matkul', function (Blueprint $table) {
-            $table->string('id_matkul', 10)->primary();
+            $table->string('id_matkul', 10)->primary(); 
             $table->string('nama_matkul', 25);
-            $table->integer('sks', 20);
+            $table->integer('sks');
             $table->timestamps();
         });
     }

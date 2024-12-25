@@ -6,6 +6,7 @@
     <title>Papan Informasi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 </head>
 <body onload="updateDateTime()">
     <div class="container-fluid bg-primary text-white py-2">
@@ -34,7 +35,10 @@
                             <img src="{{ asset('utama/img/campus.jpg') }}" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="https://via.placeholder.com/1200x400" class="d-block w-100" alt="...">
+                            <img src="{{ asset('utama/img/profile.jpg') }}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ asset('utama/img/profil.jpg') }}" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -51,7 +55,7 @@
                 <div class="row">
                     <div class="col-md-3 mb-4">
                         <div class="card text-center">
-                            <img src="{{ asset('utama/img/campus.jpg') }}" class="card-img-top" alt="Jadwal Mata Kuliah">
+                            <img src="{{ asset('utama/img/bku.jpg') }}" class="card-img-top" alt="Jadwal Mata Kuliah">
                             <div class="card-body">
                                 <h5 class="card-title">Jadwal Mata Kuliah</h5>
                                 <a href="#" class="btn btn-warning">Lihat Jadwal</a>
@@ -60,7 +64,7 @@
                     </div>
                     <div class="col-md-3 mb-4">
                         <div class="card text-center">
-                            <img src="{{ asset('utama/img/campus.jpg') }}" class="card-img-top" alt="Jadwal Dosen">
+                            <img src="{{ asset('utama/img/Tipe-mengajar-dosen-masa-kini.jpg') }}" class="card-img-top" alt="Jadwal Dosen">
                             <div class="card-body">
                                 <h5 class="card-title">Jadwal Dosen</h5>
                                 <a href="#" class="btn btn-warning">Lihat Jadwal</a>
@@ -69,7 +73,7 @@
                     </div>
                     <div class="col-md-3 mb-4">
                         <div class="card text-center">
-                            <img src="{{ asset('utama/img/campus.jpg') }}" class="card-img-top" alt="Jadwal Agenda">
+                            <img src="{{ asset('utama/img/agenda.jpg') }}" class="card-img-top" alt="Jadwal Agenda">
                             <div class="card-body">
                                 <h5 class="card-title">Jadwal Agenda</h5>
                                 <a href="#" class="btn btn-warning">Lihat Jadwal</a>
@@ -78,7 +82,7 @@
                     </div>
                     <div class="col-md-3 mb-4">
                         <div class="card text-center">
-                            <img src="{{ asset('utama/img/campus.jpg') }}" class="card-img-top" alt="Jadwal Staff">
+                            <img src="{{ asset('utama/img/staff.png') }}" class="card-img-top" alt="Jadwal Staff">
                             <div class="card-body">
                                 <h5 class="card-title">Jadwal Staff</h5>
                                 <a href="#" class="btn btn-warning">Lihat Jadwal</a>
@@ -104,9 +108,15 @@
                 <div class="card">
                     <div class="card-header bg-primary text-white">Petugas Hari Ini</div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Ibu Puan Mahasiswa</li>
-                        <li class="list-group-item">Bapak Aditya Rusdi</li>
-                        <li class="list-group-item">Prof. Yadi S.KM</li>
+                        <li class="list-group-item">
+                        <img src="images/profia.jpg">
+                        Ibu Puan Mahasiswa</li>
+                        <li class="list-group-item">
+                        <img src="images/propil.jpg">
+                        Bapak Aditya Rusdi</li>
+                        <li class="list-group-item">
+                        <img src="images/prod.jpg">
+                        Prof. Yadi S.KM</li>
                     </ul>
                 </div>
             </div>

@@ -1,0 +1,8 @@
+.card-title{
+    display: flex;
+    font-size: medium;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

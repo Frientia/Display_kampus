@@ -37,12 +37,14 @@ class RuanganController extends Controller
         $request->validate([
             'id_ruangan' => 'required',
             'nama_ruangan' => 'required|unique:ruangan,nama_ruangan',
+            'lokasi' => 'required',
         ]);
         Ruangan::create([
             'id_ruangan' => $request->id_ruangan,
-            'nama_ruangan' => $request->nama_ruangan
+            'nama_ruangan' => $request->nama_ruangan,
+            'lokasi' => $request->lokasi
         ]);
-        return redirect()->route('ruangan.index')->with(['berhasil' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('ruangan.index')->with('success', 'Data Berhasil Disimpan!');
     }
 
     /**
@@ -58,7 +60,7 @@ class RuanganController extends Controller
      */
     public function edit(string $id)
     {
-        $ruangan = Ruangan::find($id);
+        $ruangan = Ruangan::findOrFail($id);
         return view('ruangan.edit', compact('ruangan'));
     }
 
@@ -70,13 +72,15 @@ class RuanganController extends Controller
         $request->validate([
             'id_ruangan' => 'required',
             'nama_ruangan' => 'required|unique:ruangan,nama_ruangan,' . $id . ',id_ruangan',
+            'lokasi' => 'required',
         ]);
         $ruangan = Ruangan::findOrFail($id);
         $ruangan->update([
             'id_ruangan' => $request->id_ruangan,
-            'nama_ruangan' => $request->nama_ruangan
+            'nama_ruangan' => $request->nama_ruangan,
+            'lokasi' => $request->lokasi
         ]);
-        return redirect()->route('ruangan.index')->with(['berhasil' => 'Data Berhasil Diupdate!!']);
+        return redirect()->route('ruangan.index')->with('success', 'Data Berhasil Diupdate!');
     }
 
     /**
@@ -86,6 +90,7 @@ class RuanganController extends Controller
     {
         $ruangan = Ruangan::findOrFail($id);
         $ruangan->delete();
-        return redirect()->route('ruangan.index')->with(['berhasil' => 'Data Berhasil Dihapus']);
+        return redirect()->route('ruangan.index')->with('success', 'Data Berhasil Dihapus!');
+
     }
 }

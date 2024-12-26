@@ -13,6 +13,6 @@ class Ruangan extends Model
     protected $primaryKey = 'id_ruangan';
     protected $keyType = 'string';
     protected $fillable = [
-        'id_ruangan', 'nama_ruangan', 'updated_at', 'created_at'
+        'id_ruangan', 'nama_ruangan','lokasi', 'updated_at', 'created_at'
     ];
 }

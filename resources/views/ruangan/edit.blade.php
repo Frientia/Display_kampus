@@ -30,6 +30,12 @@
                                 <div class="alert alert-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
+                            <label for="" class="form-label">Lokasi</label>
+                            <input type="text" name="lokasi" class="form-control @error('lokasi') is-invalid @enderror" value="{{$ruangan->lokasi}}" placeholder="Masukan Lokasi">
+                            @error('lokasi')
+                                <div class="alert alert-danger mt-2">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="mb-3">
                             <button class="btn btn-warning btn-sm">Update</button>
                             <a href="{{ route('ruangan.index') }}" class="btn btn-success btn-sm">Kembali</a>

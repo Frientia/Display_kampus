@@ -173,7 +173,7 @@
 </head>
 <body>
     <header>
-        <img src="logo1.png" alt="Global Institute Logo" class="logo">
+        <img src="{{ asset('utama/img/logog.png') }}" alt="Global Institute Logo" class="logo">
         <div class="header-text">
             <p>Jadwal Staff</p>
         </div>

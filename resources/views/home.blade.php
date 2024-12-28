@@ -85,7 +85,7 @@
                             <img src="{{ asset('utama/img/staff.png') }}" class="card-img-top" alt="Jadwal Staff">
                             <div class="card-body">
                                 <h5 class="card-title">Jadwal Staff</h5>
-                                <a href="#" class="btn btn-warning">Lihat Jadwal</a>
+                                <a href="/staffhome" class="btn btn-warning">Lihat Jadwal</a>
                             </div>
                         </div>
                     </div>

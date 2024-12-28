@@ -12,6 +12,7 @@ use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\KonsentrasiController;
 use App\Http\Controllers\AgendaHomeController;
+use App\Http\Controllers\StaffHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,5 +42,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/konsentrasi', KonsentrasiController::class);
 
 });
+
+Route::get('/staffhome', [StaffHomeController::class, 'showDashboard']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

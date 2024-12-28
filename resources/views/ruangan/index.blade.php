@@ -62,6 +62,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Ruangan</th>
+                                    <th>Lokasi</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -70,6 +71,7 @@
                                 <tr>
                                 <td>{{ $loop->iteration }}</td>
                                     <td>{{$k->nama_ruangan}}</td>
+                                    <td>{{$k->lokasi}}</td>
                                     
 
                                     <td class="d-flex gap-2">

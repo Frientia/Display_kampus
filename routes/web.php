@@ -13,6 +13,7 @@ use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\KonsentrasiController;
 use App\Http\Controllers\AgendaHomeController;
 use App\Http\Controllers\StaffHomeController;
+use App\Http\Controllers\DosenHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/', [AgendaHomeController::class, 'showDashboard']);
+Route::get('/dosenhome', [DosenHomeController::class, 'index'])->name('dosen.index');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

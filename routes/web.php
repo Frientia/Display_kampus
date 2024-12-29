@@ -14,6 +14,8 @@ use App\Http\Controllers\KonsentrasiController;
 use App\Http\Controllers\AgendaHomeController;
 use App\Http\Controllers\StaffHomeController;
 use App\Http\Controllers\DosenHomeController;
+use App\Http\Controllers\HomeAgendaController;
+use App\Http\Controllers\ProdiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/', [AgendaHomeController::class, 'showDashboard']);
 Route::get('/dosenhome', [DosenHomeController::class, 'index'])->name('dosen.index');
+Route::get('/agendahome', [HomeAgendaController::class, 'index'])->name('agenda.index');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -42,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/jadwal', JadwalController::class);
     Route::resource('/agenda', AgendaController::class);
     Route::resource('/konsentrasi', KonsentrasiController::class);
+    Route::resource('/prodi', ProdiController::class);
 
 });
 

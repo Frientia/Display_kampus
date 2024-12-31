@@ -67,7 +67,6 @@
                                     <td>
                                         <a href="{{ route('staff.edit', $s->id_staff) }}" class="btn btn-warning btn-sm">Edit</a>
                                     </td>
-                                    
                                     <td>
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('staff.destroy', $s->id_staff) }}" method="POST">
                                             <button type="submit" class="btn btn-sm btn-danger">Hapus</button>

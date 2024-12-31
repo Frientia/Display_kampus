@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kelas extends Model
+class Semester extends Model
 {
     use HasFactory;
-    protected $table = 'kelas';
+    protected $table = 'semester';
     public $incrementing = false;
-    protected $primaryKey = 'id_kelas';
+    protected $primaryKey = 'id_semester';
     protected $keyType = 'string';
     protected $fillable = [
-        'id_kelas', 'nama_kelas','id_konsentrasi','id_semester', 'updated_at', 'created_at'
+        'id_semester', 'nama_semester'
     ];
-};
+}

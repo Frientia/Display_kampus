@@ -29,6 +29,32 @@
                             @enderror
                         </div>
                         <div class="mb-3">
+        <label for="id_konsentrasi" class="form-label">ID Konsentrasi</label>
+        <select name="id_konsentrasi" id="id_konsentrasi" class="form-control @error('id_konsentrasi') is-invalid @enderror">
+            <option value="" selected disabled>Pilih ID Konsentrasi</option>
+            @foreach($konsentrasiList as $konsentrasi)
+                <option value="{{ $konsentrasi->id_konsentrasi }}">{{ $konsentrasi->nama_konsentrasi }}</option>
+            @endforeach
+        </select>
+        @error('id_konsentrasi')
+            <div class="alert alert-danger mt-2">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <div class="mb-3">
+    <label for="id_semester" class="form-label">ID Semester</label>
+    <select name="id_semester" id="id_semester" class="form-control @error('id_semester') is-invalid @enderror">
+        <option value="" selected disabled>Pilih ID Semester</option>
+        @foreach($semesterList as $semester)
+            <option value="{{ $semester->id_semester }}">{{ $semester->nama_semester }}</option>
+        @endforeach
+    </select>
+    @error('id_semester')
+        <div class="alert alert-danger mt-2">{{ $message }}</div>
+    @enderror
+</div>
+
+                        <div class="mb-3">
                             <button class="btn btn-danger btn-sm">Simpan</button>
                             <a href="{{ route('kelas.index') }}" class="btn btn-success btn-sm">Kembali</a>
                         </div>

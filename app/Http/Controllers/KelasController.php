@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Kelas;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
-
+use App\Models\Konsentrasi;
+use App\Models\Semester;
 
 class KelasController extends Controller
 {
@@ -26,7 +27,10 @@ class KelasController extends Controller
      */
     public function create()
     {
-        return view('kelas.create');
+        $semesterList = Semester::all();
+        $konsentrasiList = Konsentrasi::all();
+        return view('kelas.create', compact('konsentrasiList', 'semesterList'));
+        
     }
 
     /**
@@ -38,10 +42,14 @@ class KelasController extends Controller
        $request->validate([
         'id_kelas' => 'required',
         'nama_kelas' => 'required|unique:kelas,nama_kelas',
+        'id_konsentrasi' => 'required|exists:konsentrasi,id_konsentrasi',
+        'id_semester' => 'required|exists:semester,id_semester',
     ]);
     Kelas::create([
         'id_kelas' => $request->id_kelas,
-        'nama_kelas' => $request->nama_kelas
+        'nama_kelas' => $request->nama_kelas,
+        'id_konsentrasi' => $request->id_konsentrasi,
+        'id_semester' => $request->id_semester
     ]);
     return redirect()->route('kelas.index')->with(['berhasil' => 'Data Berhasil Disimpan!']);
     }
@@ -59,8 +67,10 @@ class KelasController extends Controller
      */
     public function edit(string $id)
     {
-        $kelas = Kelas::find($id);
-        return view('kelas.edit', compact('kelas'));
+        $semesterList = Semester::all();
+        $kelas = Kelas::findOrFail($id);
+        $konsentrasiList = Konsentrasi::all();
+        return view('kelas.edit', compact('kelas', 'konsentrasiList', 'semesterList'));
     }
 
     /**
@@ -71,11 +81,15 @@ class KelasController extends Controller
         $request->validate([
             'id_kelas' => 'required',
             'nama_kelas' => 'required|unique:kelas,nama_kelas,' . $id . ',id_kelas',
+            'id_konsentrasi' => 'required|exists:konsentrasi,id_konsentrasi',
+            'id_semester' => 'required|exists:semester,id_semester',
         ]);
         $kelas = Kelas::findOrFail($id);
         $kelas->update([
             'id_kelas' => $request->id_kelas,
-            'nama_kelas' => $request->nama_kelas
+            'nama_kelas' => $request->nama_kelas,
+            'id_konsentrasi' => $request->id_konsentrasi,
+            'id_semester' => $request->id_semester
         ]);
         return redirect()->route('kelas.index')->with(['berhasil' => 'Data Berhasil Diupdate!!']);
     }

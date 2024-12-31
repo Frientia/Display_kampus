@@ -1,5 +1,19 @@
 @extends('layout.app')
 @section('content')
+
+@if(session('berhasil'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: '{{ session("berhasil") }}',
+            timer: 2000,
+            showConfirmButton: false
+        });
+    </script>
+@endif
+
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
 
@@ -48,6 +62,8 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Kelas</th>
+                                    <th>id Semester</th>
+                                    <th>id Konsentrasi</th>
                                     <th>Aksi</th>
 
                                 </tr>
@@ -56,18 +72,20 @@
                                 @foreach($kelas as $k)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{$k->nama_kelas}}</td>
+                                    <td>{{$k->id_semester}}</td>
+                                    <td>{{$k->id_konsentrasi}}</td>
+                                    
                                     
 
                                     <td class="d-flex gap-2">
-    <a href="{{ route('kelas.edit', $k->id_kelas) }}" class="btn btn-warning btn-sm">Edit</a>
-    <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('kelas.destroy', $k->id_kelas) }}" method="POST" class="d-inline-block">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-    </form>
-</td>
+                                        <a href="{{ route('kelas.edit', $k->id_kelas) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('kelas.destroy', $k->id_kelas) }}" method="POST" class="d-inline-block">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                        </form>
+                                    </td>
 
                                 </tr>
                                 @endforeach

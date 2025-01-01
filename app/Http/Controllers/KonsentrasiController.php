@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Konsentrasi;
+use App\Models\Prodi;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 
@@ -16,7 +17,9 @@ class KonsentrasiController extends Controller
      */
     public function index()
     {
-        $konsentrasi = Konsentrasi::orderBy('created_at', 'DESC')->get();
+        $konsentrasi = Konsentrasi::join('prodi', 'konsentrasi.id_prodi', '=', 'prodi.id_prodi')
+        ->select('konsentrasi.*', 'prodi.nama_prodi')
+        ->get();
         return view('konsentrasi.index', compact('konsentrasi'));
     }
 
@@ -25,7 +28,8 @@ class KonsentrasiController extends Controller
      */
     public function create()
     {
-        return view('konsentrasi.create');
+        $prodi = Prodi::all();
+        return view('konsentrasi.create', compact('prodi'));
     }
 
     /**
@@ -37,10 +41,12 @@ class KonsentrasiController extends Controller
         $request->validate([
             'id_konsentrasi' => 'required',
             'nama_konsentrasi' => 'required|unique:konsentrasi,nama_konsentrasi',
+            'id_prodi' => 'required|exists:prodi,id_prodi',
         ]);
         konsentrasi::create([
             'id_konsentrasi' => $request->id_konsentrasi,
-            'nama_konsentrasi' => $request->nama_konsentrasi
+            'nama_konsentrasi' => $request->nama_konsentrasi,
+            'id_prodi' => $request->id_prodi
         ]);
         return redirect()->route('konsentrasi.index')->with(['berhasil' => 'Data Berhasil Disimpan!']);
     }
@@ -58,8 +64,9 @@ class KonsentrasiController extends Controller
      */
     public function edit(string $id)
     {
-        $konsentrasi = Konsentrasi::find($id);
-        return view('konsentrasi.edit', compact('konsentrasi'));
+        $konsentrasi = Konsentrasi::findOrFail($id);
+        $prodi = Prodi::all();
+        return view('konsentrasi.edit', compact('konsentrasi', 'prodi'));
     }
 
     /**
@@ -70,11 +77,13 @@ class KonsentrasiController extends Controller
         $request->validate([
             'id_konsentrasi' => 'required',
             'nama_konsentrasi' => 'required|unique:konsentrasi,nama_konsentrasi,' . $id . ',id_konsentrasi',
+            'id_prodi' => 'required',
         ]);
         $konsentrasi = Konsentrasi::findOrFail($id);
         $konsentrasi->update([
             'id_konsentrasi' => $request->id_konsentrasi,
-            'nama_konsentrasi' => $request->nama_konsentrasi
+            'nama_konsentrasi' => $request->nama_konsentrasi,
+            'id_prodi' => $request->id_prodi
         ]);
         return redirect()->route('konsentrasi.index')->with(['berhasil' => 'Data Berhasil Diupdate!!']);
     }

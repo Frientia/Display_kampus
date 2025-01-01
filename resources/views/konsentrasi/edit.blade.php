@@ -31,6 +31,20 @@
                             @enderror
                         </div>
                         <div class="mb-3">
+                            <label for="id_prodi" class="form-label">Nama Prodi</label>
+                            <select name="id_prodi" class="form-control">
+                                <option value="">-- Pilih Prodi --</option>
+                                @foreach($prodi as $prodi)
+                                    <option value="{{ $prodi->id_prodi }}" {{ $prodi->nama_prodi == $konsentrasi->id_prodi ? 'selected' : '' }} >
+                                        {{ $prodi->nama_prodi }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('id_matkul')
+                                <div class="alert alert-danger mt-2">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
                             <button class="btn btn-warning btn-sm">Update</button>
                             <a href="{{ route('konsentrasi.index') }}" class="btn btn-danger  btn-sm">Kembali</a>
                         </div>

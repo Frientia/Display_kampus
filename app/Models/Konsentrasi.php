@@ -13,6 +13,6 @@ class Konsentrasi extends Model
     protected $primaryKey = 'id_konsentrasi';
     protected $keyType = 'string';
     protected $fillable = [
-        'id_konsentrasi', 'nama_konsentrasi', 'updated_at', 'created_at'
+        'id_konsentrasi', 'nama_konsentrasi', 'id_prodi', 'updated_at', 'created_at'
     ];
 }

@@ -62,6 +62,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Konsentrasi</th>
+                                    <th>Nama Prodi</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -70,8 +71,8 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{$k->nama_konsentrasi}}</td>
-                                    
-
+                                    <td>{{$k->nama_prodi}}</td>
+                                
                                     <td class="d-flex gap-2">
     <a href="{{ route('konsentrasi.edit', $k->id_konsentrasi) }}" class="btn btn-warning btn-sm">Edit</a>
     <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('konsentrasi.destroy', $k->id_konsentrasi) }}" method="POST" class="d-inline-block">

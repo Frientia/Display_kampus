@@ -13,6 +13,6 @@ class Matkul extends Model
     protected $primaryKey = 'id_matkul';
     protected $keyType = 'string';
     protected $fillable = [
-        'id_matkul', 'nama_matkul', 'updated_at', 'created_at'
+        'id_matkul', 'nama_matkul','sks'
     ];
 };

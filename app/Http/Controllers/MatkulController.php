@@ -28,11 +28,13 @@ class MatkulController extends Controller
         //validate form
         $request->validate([
             'id_matkul' => 'required',
-            'nama_matkul' => 'required|unique:matkul,nama_matkul',
+            'nama_matkul' => 'required',
+            'sks' => 'required'
         ]);
         Matkul::create([
             'id_matkul' => $request->id_matkul,
-            'nama_matkul' => $request->nama_matkul
+            'nama_matkul' => $request->nama_matkul,
+            'sks' => $request->sks
         ]);
         return redirect()->route('matkul.index')->with(['berhasil' => 'Data Berhasil Disimpan!']);
     }
@@ -46,12 +48,14 @@ class MatkulController extends Controller
     {
         $request->validate([
             'id_matkul' => 'required',
-            'nama_matkul' => 'required|unique:matkul,nama_matkul,' . $id . ',id_matkul',
+            'nama_matkul' => 'required',
+            'sks' => 'required'
         ]);
         $matkul = Matkul::findOrFail($id);
         $matkul->update([
             'id_matkul' => $request->id_matkul,
-            'nama_matkul' => $request->nama_matkul
+            'nama_matkul' => $request->nama_matkul,
+            'sks' => $request->sks
         ]);
         return redirect()->route('matkul.index')->with(['berhasil' => 'Data Berhasil Diupdate!!']);
     }

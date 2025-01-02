@@ -44,19 +44,6 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="id_matkul" class="form-label">Nama Matkul</label>
-                            <select name="id_matkul" class="form-control">
-                                <option value="">-- Pilih Mata Kuliah --</option>
-                                @foreach($matkuls as $matkul)
-                                    <option value="{{ $matkul->id_matkul }}">{{ $matkul->nama_matkul }}</option>
-                                @endforeach
-                            </select>
-                            @error('id_matkul')
-                                <div class="alert alert-danger mt-2">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3">
                             <button class="btn btn-danger btn-sm">Simpan</button>
                             <a href="{{ route('dosen.index') }}" class="btn btn-success btn-sm">Kembali</a>
                         </div>

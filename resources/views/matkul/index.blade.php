@@ -62,6 +62,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Matkul</th>
+                                    <th>SKS</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -69,7 +70,8 @@
                                 @foreach($matkul as $m)
                                 <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                    <td>{{$m->nama_matkul}}</td>
+                                <td>{{$m->nama_matkul}}</td>
+                                <td>{{$m->sks}}</td>
 
                             <td>
                                 <div class="btn-group" role="group">

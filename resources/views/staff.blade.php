@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Jadwal</title>
-    
+
     <!-- Menambahkan Font Awesome untuk ikon -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <!-- Menggunakan Google Fonts Poppins untuk font modern -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
+
     <style>
         /* Menambahkan font Poppins */
         body {
@@ -19,7 +20,8 @@
             background-color: #f1f4f9;
             display: flex;
             flex-direction: column;
-            height: 100vh; /* Full height viewport */
+            height: 100vh;
+            /* Full height viewport */
         }
 
         /* Header */
@@ -27,7 +29,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #1a2a5b; /* Warna biru yang lebih gelap */
+            background-color: #1a2a5b;
+            /* Warna biru yang lebih gelap */
             color: white;
             padding: 5px 30px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -51,13 +54,15 @@
             align-items: flex-end;
             font-size: 14px;
             color: #fff;
-            margin-left: auto; /* Memindahkan ke kanan */
+            margin-left: auto;
+            /* Memindahkan ke kanan */
         }
 
         .current-time {
             font-size: 20px;
             font-weight: 600;
-            margin-bottom: 2px; /* Mengurangi jarak antara jam dan tanggal */
+            margin-bottom: 2px;
+            /* Mengurangi jarak antara jam dan tanggal */
         }
 
         .date {
@@ -68,7 +73,8 @@
         /* Container dan Tombol */
         .container {
             display: flex;
-            justify-content: space-between; /* Tombol Kembali di kiri dan kolom cari di kanan */
+            justify-content: space-between;
+            /* Tombol Kembali di kiri dan kolom cari di kanan */
             align-items: center;
             margin-top: 30px;
             padding: 0 20px;
@@ -127,7 +133,8 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
 
-        th, td {
+        th,
+        td {
             padding: 20px;
             text-align: center;
             font-size: 16px;
@@ -171,6 +178,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <img src="{{ asset('utama/img/logog.png') }}" alt="Global Institute Logo" class="logo">
@@ -188,14 +196,24 @@
         <button id="backButton"><i class="fas fa-arrow-left"></i> Kembali</button>
 
         <!-- Kolom Pencarian (Dropdown) -->
-        <div class="search-container">
+        
+            <form method="GET" action="{{ url('staffhome') }}" class="search-container">
+                <select name="kategori" onchange="this.form.submit()" id="jabatanSelect" class="select">
+                    <option value="">Semua Jabatan</option>
+                    <option value="Akademik" {{ request('kategori') == 'Akademik' ? 'selected' : '' }}>Akademik</option>
+                    <option value="Marketing" {{ request('kategori') == 'Marketing' ? 'selected' : '' }}>Marketing</option>
+                    <option value="Keuangan" {{ request('kategori') == 'Keuangan' ? 'selected' : '' }}>Keuangan</option>
+                </select>
+            </form>
+     
+        <!-- <div class="search-container">
             <select id="jabatanSelect" class="select">
                 <option value="all">Semua Jabatan</option>
                 <option value="Keuangan">Keuangan</option>
                 <option value="Administrasi">Administrasi</option>
                 <option value="Konseling">Konseling</option>
-            </select>
-        </div>
+            </select> -->
+    </div>
     </div>
 
     <table id="staffTable">
@@ -208,24 +226,14 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($staff as $s)
             <tr class="staff" data-jabatan="Keuangan">
-                <td>1</td>
-                <td>Malik</td>
-                <td>Keuangan</td>
-                <td>08888888128</td>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{$s->nama_staff}}</td>
+                <td>{{$s->jabatan}}</td>
+                <td>{{$s->no_telp}}</td>
             </tr>
-            <tr class="staff" data-jabatan="Administrasi">
-                <td>2</td>
-                <td>Ridwan</td>
-                <td>Administrasi</td>
-                <td>0836723677</td>
-            </tr>
-            <tr class="staff" data-jabatan="Konseling">
-                <td>3</td>
-                <td>Jamal</td>
-                <td>Konseling</td>
-                <td>0822344445</td>
-            </tr>
+            @endforeach
         </tbody>
     </table>
 
@@ -252,11 +260,11 @@
 
         // Fungsi untuk menampilkan tanggal dan hari saat ini
         function updateDate() {
-            const options = { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
             };
             const currentDate = new Date().toLocaleDateString('id-ID', options);
             document.getElementById('current-date').textContent = currentDate;
@@ -264,8 +272,8 @@
 
         // Memperbarui waktu setiap detik
         setInterval(updateTime, 1000);
-        updateTime();  // Memanggil fungsi untuk menampilkan waktu saat pertama kali dimuat
-        updateDate();  // Menampilkan tanggal dan hari saat pertama kali dimuat
+        updateTime(); // Memanggil fungsi untuk menampilkan waktu saat pertama kali dimuat
+        updateDate(); // Menampilkan tanggal dan hari saat pertama kali dimuat
 
         // Menambahkan fungsionalitas tombol "Kembali"
         document.getElementById('backButton').addEventListener('click', function() {
@@ -276,7 +284,7 @@
         document.getElementById('jabatanSelect').addEventListener('change', function() {
             const selectedJabatan = this.value;
             const staffRows = document.querySelectorAll('#staffTable .staff');
-            
+
             staffRows.forEach(row => {
                 const jabatan = row.getAttribute('data-jabatan');
                 if (selectedJabatan === 'all' || jabatan === selectedJabatan) {
@@ -288,4 +296,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -2,16 +2,16 @@
 @section('content')
 
 @if(session('berhasil'))
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Berhasil!',
-            text: '{{ session("berhasil") }}',
-            timer: 2000,
-            showConfirmButton: false
-        });
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Berhasil!',
+        text: '{{ session("berhasil") }}',
+        timer: 2000,
+        showConfirmButton: false
+    });
+</script>
 @endif
 
 <!DOCTYPE html>
@@ -41,74 +41,74 @@
             </div>
         </div>
 
-                <div class="card w-100">
-                    <div class="card-header">
-                        <h3 class="card-title">Data prodi</h3>
-                        <a href="{{route('prodi.create')}}"><button class="btn btn-success">Tambah prodi</button></a>
+        <div class="card w-100">
+            <div class="card-header">
+                <h3 class="card-title">Data prodi</h3>
+                <a href="{{route('prodi.create')}}"><button class="btn btn-success">Tambah prodi</button></a>
 
-                        <div class="card-tools">
-                            <ul class="pagination pagination-sm float-end">
-                                <li class="page-item"> <a class="page-link" href="#">&laquo;</a> </li>
-                                <li class="page-item"> <a class="page-link" href="#">1</a> </li>
-                                <li class="page-item"> <a class="page-link" href="#">2</a> </li>
-                                <li class="page-item"> <a class="page-link" href="#">3</a> </li>
-                                <li class="page-item"> <a class="page-link" href="#">&raquo;</a> </li>
-                            </ul>
-                        </div>
-                    </div> <!-- /.card-header -->
-                    <div class="card-body p-0">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama prodi</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($prodi as $p)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{$p->nama_prodi}}</td>
-                                    
+                <div class="card-tools">
+                    <ul class="pagination pagination-sm float-end">
+                        <li class="page-item"> <a class="page-link" href="#">&laquo;</a> </li>
+                        <li class="page-item"> <a class="page-link" href="#">1</a> </li>
+                        <li class="page-item"> <a class="page-link" href="#">2</a> </li>
+                        <li class="page-item"> <a class="page-link" href="#">3</a> </li>
+                        <li class="page-item"> <a class="page-link" href="#">&raquo;</a> </li>
+                    </ul>
+                </div>
+            </div> <!-- /.card-header -->
+            <div class="card-body p-0">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama prodi</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($prodi as $p)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{$p->nama_prodi}}</td>
 
-                                    <td class="d-flex gap-2">
-    <a href="{{ route('prodi.edit', $p->id_prodi) }}" class="btn btn-warning btn-sm">Edit</a>
-    <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('prodi.destroy', $p->id_prodi) }}" method="POST" class="d-inline-block">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-    </form>
-</td>
 
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div> <!-- /.card-body -->
-                </div> <!-- /.card -->
-            </div>
-        </div>
+                            <td class="d-flex gap-2">
+                                <a href="{{ route('prodi.edit', $p->id_prodi) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('prodi.destroy', $p->id_prodi) }}" method="POST" class="d-inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                </form>
+                            </td>
 
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script>
-                function confirmDelete(id) {
-                    Swal.fire({
-                        title: 'Apakah Anda yakin?',
-                        text: "Data ini akan dihapus!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#d33',
-                        cancelButtonColor: '#3085d6',
-                        confirmButtonText: 'Ya, hapus!',
-                        cancelButtonText: 'Batal'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            document.getElementById('delete-form-' + id).submit();
-                        }
-                    })
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div> <!-- /.card-body -->
+        </div> <!-- /.card -->
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Data ini akan dihapus!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + id).submit();
                 }
-            </script>
+            })
+        }
+    </script>
 
 </body>
 @endsection

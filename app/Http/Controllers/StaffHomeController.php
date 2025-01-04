@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
+use App\Models\Staff;
+use Illuminate\Http\Request;
 
 class StaffHomeController extends Controller
 {
-    public function showDashboard()
+    public function showDashboard(Request $request)
     {
-        $agendas = DB::table('agenda')
-            ->select('nama_agenda', 'tanggal')
-            ->orderBy('tanggal', 'asc')
+        // Ambil kategori/jabatan dari request
+        $kategori = $request->get('kategori');
+
+        // Query data staff dengan filter kategori (jika ada)
+        $staff = Staff::when($kategori, function ($query, $kategori) {
+                return $query->where('jabatan', $kategori);
+            })
+            ->orderBy('created_at', 'DESC')
             ->get();
 
-        return view('staff', compact('agendas'));
+        return view('staff', compact('staff', 'kategori'));
     }
 }

@@ -27,61 +27,56 @@
             </div>
         </div>
 
-                <div class="card w-100">
-                    <div class="card-header">
-                        <h3 class="card-title">Data Staff</h3>
-                        <a href="{{route('staff.create')}}"><button class="btn btn-success">Tambah Staff</button></a>
-                        
-                        <div class="card-tools">
-                            <ul class="pagination pagination-sm float-end">
-                                <li class="page-item"> <a class="page-link" href="#">&laquo;</a> </li>
-                                <li class="page-item"> <a class="page-link" href="#">1</a> </li>
-                                <li class="page-item"> <a class="page-link" href="#">2</a> </li>
-                                <li class="page-item"> <a class="page-link" href="#">3</a> </li>
-                                <li class="page-item"> <a class="page-link" href="#">&raquo;</a> </li>
-                            </ul>
-                        </div>
-                    </div> <!-- /.card-header -->
-                    <div class="card-body p-0">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Id Staff</th>
-                                    <th>Nama</th>
-                                    <th>Jabatan</th>
-                                    <th>No Telp</th>
-                                    <th>Aksi</th>
+        <div class="card w-100">
+            <div class="card-header">
+                <h3 class="card-title">Data Staff</h3>
+                <a href="{{route('staff.create')}}"><button class="btn btn-success">Tambah Staff</button></a>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($staff as $s)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{$s->id_staff}}</td>
-                                    <td>{{$s->nama_staff}}</td>
-                                    <td>{{$s->jabatan}}</td>
-                                    <td>{{$s->no_telp}}</td>
+                <div class="card-tools">
+                    <ul class="pagination pagination-sm float-end">
+                        {{ $staff->links('pagination::bootstrap-4') }}
+                    </ul>
+                </div>
 
-                                    <td>
-                                        <a href="{{ route('staff.edit', $s->id_staff) }}" class="btn btn-warning btn-sm">Edit</a>
-                                    </td>
-                                    <td>
-                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('staff.destroy', $s->id_staff) }}" method="POST">
-                                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
-                                    </td>
-                                   
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div> <!-- /.card-body -->
-                </div> <!-- /.card -->
-            </div>
-        </div>
+            </div> <!-- /.card-header -->
+            <div class="card-body p-0">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Id Staff</th>
+                            <th>Nama</th>
+                            <th>Jabatan</th>
+                            <th>No Telp</th>
+                            <th>Aksi</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($staff as $s)
+                        <tr>
+                            <td>{{ $staff->firstItem() + $loop->index }}</td>
+                            <td>{{$s->id_staff}}</td>
+                            <td>{{$s->nama_staff}}</td>
+                            <td>{{$s->jabatan}}</td>
+                            <td>{{$s->no_telp}}</td>
+
+
+                            <td class="d-flex gap-2">
+                                <a href="{{ route('staff.edit', $s->id_staff) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('prodi.destroy', $s->id_staff) }}" method="POST" class="d-inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div> <!-- /.card-body -->
+        </div> <!-- /.card -->
+    </div>
+    </div>
 </body>
 @endsection

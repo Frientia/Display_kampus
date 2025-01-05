@@ -34,7 +34,7 @@ class JadwalHomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Dosen $dosen)
+    public function show(Jadwal $jadwal)  // Ganti Dosen menjadi Jadwal
     {
         //
     }
@@ -42,7 +42,7 @@ class JadwalHomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Dosen $dosen)
+    public function edit(Jadwal $jadwal)  // Ganti Dosen menjadi Jadwal
     {
         //
     }
@@ -50,7 +50,7 @@ class JadwalHomeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Dosen $dosen)
+    public function update(Request $request, Jadwal $jadwal)  // Ganti Dosen menjadi Jadwal
     {
         //
     }
@@ -58,7 +58,7 @@ class JadwalHomeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Dosen $dosen)
+    public function destroy(Jadwal $jadwal)  // Ganti Dosen menjadi Jadwal
     {
         //
     }

@@ -15,4 +15,9 @@ class Semester extends Model
     protected $fillable = [
         'id_semester', 'nama_semester'
     ];
+    // Relasi ke Kelas
+    public function kelas()
+    {
+        return $this->hasMany(Kelas::class, 'id_semester', 'id_semester');
+    }
 }

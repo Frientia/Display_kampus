@@ -15,4 +15,9 @@ class Konsentrasi extends Model
     protected $fillable = [
         'id_konsentrasi', 'nama_konsentrasi', 'id_prodi', 'updated_at', 'created_at'
     ];
+    // Relasi ke Kelas
+    public function kelas()
+    {
+        return $this->hasMany(Kelas::class, 'id_konsentrasi', 'id_konsentrasi');
+    }
 }

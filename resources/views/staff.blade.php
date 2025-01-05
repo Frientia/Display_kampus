@@ -193,7 +193,9 @@
 
     <div class="container">
         <!-- Tombol Kembali dengan ikon -->
-        <button id="backButton"><i class="fas fa-arrow-left"></i> Kembali</button>
+        <button id="backButton" onclick="window.location.href='/'">
+          <i class="fas fa-arrow-left"></i> Kembali
+      </button>
 
         <!-- Kolom Pencarian (Dropdown) -->
         

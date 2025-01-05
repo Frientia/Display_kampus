@@ -16,7 +16,7 @@ use App\Http\Controllers\StaffHomeController;
 use App\Http\Controllers\DosenHomeController;
 use App\Http\Controllers\HomeAgendaController;
 use App\Http\Controllers\ProdiController;
-
+use App\Http\Controllers\JadwalHomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +34,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/', [AgendaHomeController::class, 'showDashboard']);
 Route::get('/dosenhome', [DosenHomeController::class, 'index'])->name('dosen.index');
 Route::get('/agendahome', [HomeAgendaController::class, 'index'])->name('agenda.index');
-Route::get('/jadwalhome', [HomeAgendaController::class, 'index'])->name('jadwal.index');
+Route::get('/jadwalhome', [JadwalHomeController::class, 'index'])->name('jadwal.index');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

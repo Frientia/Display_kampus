@@ -13,6 +13,6 @@ class Dosen extends Model
     protected $primaryKey = 'id_dosen';
     protected $keyType = 'string';
     protected $fillable = [
-        'id_dosen', 'nama_dosen', 'email', 'no_telp', 'id_matkul'
+        'id_dosen', 'nama_dosen', 'email', 'no_telp'
     ];
 };

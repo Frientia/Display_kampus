@@ -61,7 +61,6 @@
                             <th>Nama Dosen</th>
                             <th>Email</th>
                             <th>No Telp</th>
-                            <th>Nama Matkul</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -73,7 +72,6 @@
                             <td>{{$d->nama_dosen}}</td>
                             <td>{{$d->email}}</td>
                             <td>{{$d->no_telp}}</td>
-                            <td>{{$d->nama_matkul}}</td>
                             <td>
                                 <div class="btn-group" role="group">
                                     <a href="{{ route('dosen.edit', $d->id_dosen) }}" class="btn btn-warning btn-sm" style="margin-right: 5px; width: 60px; text-align: center;">Edit</a>

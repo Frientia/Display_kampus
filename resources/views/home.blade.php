@@ -58,7 +58,7 @@
                             <img src="{{ asset('utama/img/bku.jpg') }}" class="card-img-top" alt="Jadwal Mata Kuliah">
                             <div class="card-body">
                                 <h5 class="card-title">Jadwal Mata Kuliah</h5>
-                                <a href="#" class="btn btn-warning">Lihat Jadwal</a>
+                                <a href="/jadwalhome" class="btn btn-warning">Lihat Jadwal</a>
                             </div>
                         </div>
                     </div>

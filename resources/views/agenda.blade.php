@@ -196,23 +196,18 @@
             </tr>
         </thead>
         <tbody>
+        @foreach($agendas as $a)
             <!-- Data agenda dari server akan dimasukkan di sini -->
             <tr>
-                <td>1</td>
-                <td>Rapat Mingguan</td>
-                <td>2025-01-10</td>
-                <td>08:00 - 10:00</td>
-                <td>Ruang Rapat A</td>
-                <td>Diskusi mengenai perkembangan proyek.</td>
+            <td>{{ $loop->iteration }}</td>
+                <td>{{$a->nama_agenda}}</td>
+                <td>{{$a->tanggal}}</td>
+                <td>{{$a->waktu_mulai}}</td>
+                <td>{{$a->waktu_selesai}}</td>
+                <td>{{$a->lokasi}}</td>
+                <td>{{$a->dekripsi}}</td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>Workshop</td>
-                <td>2025-01-12</td>
-                <td>13:00 - 16:00</td>
-                <td>Lab Komputer</td>
-                <td>Pelatihan penggunaan sistem terbaru.</td>
-            </tr>
+            @endforeach
         </tbody>
     </table>
 

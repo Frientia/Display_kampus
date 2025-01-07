@@ -12,7 +12,8 @@ class HomeAgendaController extends Controller
      */
     public function index()
     {
-        return view('agenda');
+        $agendas = Agenda::all();
+        return view('agenda', compact('agendas'));
     }
     
 }

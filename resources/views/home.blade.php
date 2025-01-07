@@ -64,15 +64,6 @@
                     </div>
                     <div class="col-md-3 mb-4">
                         <div class="card text-center">
-                            <img src="{{ asset('utama/img/Tipe-mengajar-dosen-masa-kini.jpg') }}" class="card-img-top" alt="Jadwal Dosen">
-                            <div class="card-body">
-                                <h5 class="card-title">Daftar Dosen</h5>
-                                <a href="/dosenhome" class="btn btn-warning">Lihat Jadwal</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="card text-center">
                             <img src="{{ asset('utama/img/agenda.jpg') }}" class="card-img-top" alt="Jadwal Agenda">
                             <div class="card-body">
                                 <h5 class="card-title">Jadwal Agenda</h5>
@@ -86,6 +77,16 @@
                             <div class="card-body">
                                 <h5 class="card-title">Daftar Staff</h5>
                                 <a href="/staffhome" class="btn btn-warning">Lihat Jadwal</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mb-4">
+                        <div class="card text-center">
+                            <img src="{{ asset('utama/img/Tipe-mengajar-dosen-masa-kini.jpg') }}" class="card-img-top" alt="Jadwal Dosen">
+                            <div class="card-body">
+                                <h5 class="card-title">Daftar Dosen</h5>
+                                <a href="/dosenhome" class="btn btn-warning">Lihat Jadwal</a>
                             </div>
                         </div>
                     </div>

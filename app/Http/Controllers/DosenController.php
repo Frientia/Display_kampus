@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
@@ -14,7 +15,7 @@ class DosenController extends Controller
 {
     public function index()
     {
-        $dosen = Dosen::orderBy('created_at', 'DESC')->get();
+        $dosen = Dosen::orderBy('created_at', 'DESC')->paginate(5);
         return view('dosen.index', compact('dosen'));
     }
 
@@ -30,7 +31,7 @@ class DosenController extends Controller
             'id_dosen' => 'required',
             'nama_dosen' => 'required',
             'email' => 'required',
-            'no_telp'=> 'required'
+            'no_telp'=> 'required|numeric'
         ]);
         Dosen::create([
             'id_dosen' => $request->id_dosen,
@@ -53,7 +54,7 @@ class DosenController extends Controller
             'id_dosen' => 'required',
             'nama_dosen' => 'required',
             'email' => 'required',
-            'no_telp'=> 'required'
+            'no_telp'=> 'required|numeric'
         ]);
         $dosen = Dosen::findOrFail($id);
         $dosen->update([

@@ -14,7 +14,7 @@ class MatkulController extends Controller
 {
     public function index()
     {
-        $matkul = Matkul::orderBy('created_at', 'DESC')->get();
+        $matkul = Matkul::orderBy('created_at', 'DESC')->paginate(7);
         return view('matkul.index', compact('matkul'));
     }
 

@@ -198,7 +198,7 @@
       </button>
 
         <!-- Kolom Pencarian (Dropdown) -->
-        
+
             <form method="GET" action="{{ url('staffhome') }}" class="search-container">
                 <select name="kategori" onchange="this.form.submit()" id="jabatanSelect" class="select">
                     <option value="">Semua Jabatan</option>
@@ -207,7 +207,7 @@
                     <option value="Keuangan" {{ request('kategori') == 'Keuangan' ? 'selected' : '' }}>Keuangan</option>
                 </select>
             </form>
-     
+
         <!-- <div class="search-container">
             <select id="jabatanSelect" class="select">
                 <option value="all">Semua Jabatan</option>

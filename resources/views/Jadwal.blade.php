@@ -184,6 +184,7 @@
                     <th><i class="fas fa-book"></i> Matakuliah</th>
                     <th><i class="fas fa-clock"></i> Jam</th>
                     <th><i class="fas fa-door-open"></i> Ruangan</th>
+                    <th><i class="fas fa-door-open"></i> Kelas</th>
                     <th><i class="fas fa-graduation-cap"></i> SKS</th>
                     <th><i class="fas fa-chalkboard-teacher"></i> Dosen</th>
                 </tr>
@@ -196,6 +197,7 @@
                         <td class="border p-2">{{ $item->nama_matkul }}</td>
                         <td class="border p-2">{{ $item->jam_masuk }} - {{ $item->jam_selesai }}</td>
                         <td class="border p-2">{{ $item->nama_ruangan }}</td>
+                        <td class="border p-2">{{ $item->nama_kelas }}</td>
                         <td class="border p-2">{{ $item->sks }}</td>
                         <td class="border p-2">{{ $item->nama_dosen }}</td>
                     </tr>

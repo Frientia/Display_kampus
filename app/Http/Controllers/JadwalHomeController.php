@@ -46,7 +46,8 @@ class JadwalHomeController extends Controller
                 'ruangan.nama_ruangan',
                 'dosen.nama_dosen',
                 'konsentrasi.nama_konsentrasi',
-                'semester.nama_semester'
+                'semester.nama_semester',
+                'kelas.nama_kelas'
             );
         
         // Filter berdasarkan ID konsentrasi jika ada

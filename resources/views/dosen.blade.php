@@ -195,33 +195,14 @@
         <thead>
             <tr>
                 <th>No.</th>
-                <th>Nama</th>
-                <th>Email</th>
-                <th>Telp</th>
-                <th>Mata Kuliah</th>
+                <th><i class="fas fa-user"></i> Nama</th>
+                <th><i class="fas fa-envelope"></i> Email</th>
+                <th><i class="fas fa-phone"></i> Telp</th>
+                <th><i class="fas fa-book"></i> Mata Kuliah</th>
             </tr>
         </thead>
         <tbody>
             <tr class="staff" data-jabatan="Keuangan">
-                <td>1</td>
-                <td>Malik</td>
-                <td>malik1@global.ac.id</td>
-                <td>08888888128</td>
-                <td>Kalkulus</td>
-            </tr>
-            <tr class="staff" data-jabatan="Administrasi">
-                <td>2</td>
-                <td>Ridwan</td>
-                <td>ridwan1@global.ac.id</td>
-                <td>0836723677</td>
-                <td>Pemrograman Visual</td>
-            </tr>
-            <tr class="staff" data-jabatan="Konseling">
-                <td>3</td>
-                <td>Jamal</td>
-                <td>Jamal1@global.ac.id</td>
-                <td>0822344445</td>
-                <td>Sistem Operasi</td>
             </tr>
         </tbody>
     </table>

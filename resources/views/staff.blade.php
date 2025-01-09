@@ -222,9 +222,9 @@
         <thead>
             <tr>
                 <th>No.</th>
-                <th>Nama</th>
-                <th>Jabatan</th>
-                <th>Contact Person</th>
+                <th><i class="fas fa-user"></i> Nama</th>
+                <th><i class="fas fa-briefcase"></i> Jabatan</th>
+                <th><i class="fas fa-phone"></i> Contact Person</th>
             </tr>
         </thead>
         <tbody>

@@ -29,16 +29,16 @@
         <div class="row">
             <!-- Slider -->
             <div class="col-lg-8 mb-4">
-                <div id="carouselExample" class="carousel slide mb-4" data-bs-ride="carousel">
+                <div id="carouselExample" class="carousel slide mb-4" data-bs-ride="carousel" class="d-block w-100 rounded">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ asset('utama/img/campus.jpg') }}" class="d-block w-100" alt="...">
+                            <img src="{{ asset('utama/img/campus.jpg') }}" class="d-block w-100 rounded" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('utama/img/profile.jpg') }}" class="d-block w-100" alt="...">
+                            <img src="{{ asset('utama/img/profile.jpg') }}" class="d-block w-100 rounded" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('utama/img/profil.jpg') }}" class="d-block w-100" alt="...">
+                            <img src="{{ asset('utama/img/profil.jpg') }}" class="d-block w-100 rounded" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">

@@ -63,6 +63,13 @@
             flex-direction: column;
         }
 
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
         #backButton {
             background-color: #1a2a5b;
             color: white;
@@ -74,8 +81,6 @@
             display: inline-flex;
             align-items: center;
             transition: background-color 0.3s ease;
-            margin-bottom: 20px;
-            width: fit-content;
         }
 
         #backButton:hover {
@@ -84,9 +89,7 @@
 
         .filters-container {
             display: flex;
-            justify-content: flex-end;
             gap: 20px;
-            margin-bottom: 20px;
         }
 
         .filters-container select {
@@ -149,39 +152,40 @@
     </header>
 
     <div class="container">
-      <button id="backButton" onclick="window.location.href='/'">
-          <i class="fas fa-arrow-left"></i> Kembali
-      </button>
+        <div class="top-bar">
+            <button id="backButton" onclick="window.location.href='/'">
+                <i class="fas fa-arrow-left"></i> Kembali
+            </button>
 
-        <!-- Filters (Konsentrasi & Semester) -->
-        <div class="filters-container">
-            <form id="filterForm" method="GET" action="{{ URL('jadwalhome') }}">
-                <select name="konsentrasi" id="konsentrasi" onchange="this.form.submit()">
-                    <option value="">Semua Konsentrasi</option>
-                    @foreach ($konsentrasiList as $id => $nama)
-                        <option value="{{ $id }}" {{ $id == $konsentrasiId ? 'selected' : '' }}>{{ $nama }}</option>
-                    @endforeach
-                </select>
+            <div class="filters-container">
+                <form id="filterForm" method="GET" action="{{ URL('jadwalhome') }}">
+                    <select name="konsentrasi" id="konsentrasi" onchange="this.form.submit()">
+                        <option value="">Semua Konsentrasi</option>
+                        @foreach ($konsentrasiList as $id => $nama)
+                            <option value="{{ $id }}" {{ $id == $konsentrasiId ? 'selected' : '' }}>{{ $nama }}</option>
+                        @endforeach
+                    </select>
 
-                <select name="semester" id="semester" onchange="this.form.submit()">
-                    <option value="">Semua Semester</option>
-                    @foreach ($semesterList as $id => $nama)
-                        <option value="{{ $id }}" {{ $id == $semesterId ? 'selected' : '' }}>{{ $nama }}</option>
-                    @endforeach
-                </select>
-            </form>
+                    <select name="semester" id="semester" onchange="this.form.submit()">
+                        <option value="">Semua Semester</option>
+                        @foreach ($semesterList as $id => $nama)
+                            <option value="{{ $id }}" {{ $id == $semesterId ? 'selected' : '' }}>{{ $nama }}</option>
+                        @endforeach
+                    </select>
+                </form>
+            </div>
         </div>
 
         <!-- Jadwal Tabel -->
         <table>
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Matakuliah</th>
-                    <th>Jam</th>
-                    <th>Ruangan</th>
-                    <th>SKS</th>
-                    <th>Dosen</th>
+                    <th><i class="fas fa-hashtag"></i> No.</th>
+                    <th><i class="fas fa-book"></i> Matakuliah</th>
+                    <th><i class="fas fa-clock"></i> Jam</th>
+                    <th><i class="fas fa-door-open"></i> Ruangan</th>
+                    <th><i class="fas fa-graduation-cap"></i> SKS</th>
+                    <th><i class="fas fa-chalkboard-teacher"></i> Dosen</th>
                 </tr>
             </thead>
 

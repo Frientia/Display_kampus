@@ -11,6 +11,11 @@
     <!-- Menggunakan Google Fonts Poppins untuk font modern -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
+    <!-- ...existing code... -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- ...existing code... -->
+</head>
+
     <style>
         /* Menambahkan font Poppins */
         body {
@@ -171,49 +176,52 @@
             <p id="current-time" class="current-time"></p>
             <p id="current-date" class="date"></p>
         </div>
-    </header>
+        </header> <!-- Tambahkan penutupan tag header -->
 
-    <div class="container">
-        <!-- Tombol Kembali dengan ikon -->
-        <button id="backButton" onclick="window.location.href='/'">
-          <i class="fas fa-arrow-left"></i> Kembali
-      </button>
-        <div class="search-container">
-            <input type="month" id="monthFilter" class="select">
+        <div class="container">
+            <!-- Tombol Kembali dengan ikon -->
+            <button id="backButton" onclick="window.location.href='/'">
+                <i class="fas fa-arrow-left"></i> Kembali
+            </button>
+            <div class="search-container">
+                <select id="monthFilter" class="date-picker" onchange="filterByMonth()">
+                    <option value="">Pilih Bulan</option>
+                    @foreach($months as $month)
+                        <option value="{{ $month }}">{{ \Carbon\Carbon::parse($month)->format('F Y') }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
-        
-    </div>
 
-    <table id="agendaTable">
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Nama Agenda</th>
-                <th>Tanggal</th>
-                <th>Waktu</th>
-                <th>Lokasi</th>
-                <th>Deskripsi</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($agendas as $a)
-            <!-- Data agenda dari server akan dimasukkan di sini -->
-            <tr>
-            <td>{{ $loop->iteration }}</td>
-                <td>{{$a->nama_agenda}}</td>
-                <td>{{$a->tanggal}}</td>
-                <td>{{$a->waktu_mulai}}</td>
-                <td>{{$a->waktu_selesai}}</td>
-                <td>{{$a->lokasi}}</td>
-                <td>{{$a->dekripsi}}</td>
-            </tr>
+        <table id="agendaTable">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th><i class="fas fa-calendar-alt"></i> Nama Agenda</th>
+                    <th><i class="fas fa-calendar-day"></i> Tanggal</th>
+                    <th><i class="fas fa-clock"></i> Waktu</th>
+                    <th><i class="fas fa-map-marker-alt"></i> Lokasi</th>
+                    <th><i class="fas fa-align-left"></i> Deskripsi</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($agendas as $a)
+                <!-- Data agenda dari server akan dimasukkan di sini -->
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{$a->nama_agenda}}</td>
+                    <td>{{$a->tanggal}}</td>
+                    <td>{{$a->waktu_mulai}}-{{$a->waktu_selesai}}</td>
+                    <td>{{$a->lokasi}}</td>
+                    <td>{{$a->deskripsi}}</td>
+                </tr>
             @endforeach
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    <footer>
-        <p>&copy; 2024 Global Institute. All Rights Reserved.</p>
-    </footer>
+        <footer>
+            <p>&copy; 2024 Global Institute. All Rights Reserved.</p>
+        </footer>
 
     <script>
         // Fungsi untuk memperbarui waktu secara real-time
@@ -251,19 +259,8 @@
             window.history.back();
         });
 
-        // Filter data berdasarkan bulan
-        document.getElementById('monthFilter').addEventListener('change', function () {
-        const selectedMonth = this.value; // Mendapatkan bulan yang dipilih dalam format YYYY-MM
-        const agendaRows = document.querySelectorAll('#agendaTable tbody tr'); // Semua baris data agenda
-
-        agendaRows.forEach(row => {
-            const agendaDate = row.getAttribute('data-date'); // Mendapatkan tanggal dari atribut data-date (format YYYY-MM-DD)
-            const agendaMonth = agendaDate.slice(0, 7); // Ekstrak bulan dan tahun dari tanggal (format YYYY-MM)
-
-            if (!selectedMonth || agendaMonth === selectedMonth) {
-                row.style.display = ''; // Tampilkan baris jika bulan cocok atau tidak ada bulan yang dipilih
-            } else {
-                row.style.display = 'none'; // Sembunyikan baris jika bulan tidak cocok
-            }
+        document.getElementById('monthFilter').addEventListener('change', function() {
+            var month = this.value;
+            window.location.href = '/agendahome?month=' + month;
         });
-    });
+</script>

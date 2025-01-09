@@ -14,5 +14,10 @@ class AgendaHomeController extends Controller
             ->get();
 
         return view('home', compact('agendas'));
+
+    }public function showHome()
+    {
+        $agendas = Agenda::all();
+        return view('agenda', compact('agendas'));
     }
 }

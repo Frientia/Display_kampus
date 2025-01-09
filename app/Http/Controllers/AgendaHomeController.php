@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use App\Models\Staff;
 
 class AgendaHomeController extends Controller
 {
@@ -13,11 +14,10 @@ class AgendaHomeController extends Controller
             ->orderBy('tanggal', 'asc')
             ->get();
 
-        return view('home', compact('agendas'));
+        // Ambil 3 staff secara acak
+        $staffs = Staff::inRandomOrder()->take(2)->get();
 
-    }public function showHome()
-    {
-        $agendas = Agenda::all();
-        return view('agenda', compact('agendas'));
+        return view('home', compact('agendas', 'staffs'));
     }
+
 }

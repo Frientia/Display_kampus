@@ -18,7 +18,6 @@
 </head> <!--end::Head--> <!--begin::Body-->
 
 <body>
-
     <div class="main-content">
         <div class="row"></div>
         <div class="col-md-12">
@@ -60,7 +59,7 @@
                             <td>{{$s->nama_staff}}</td>
                             <td>{{$s->jabatan}}</td>
                             <td>{{$s->no_telp}}</td>
-
+                            <td>
 
                             <td class="d-flex gap-2">
                                 <a href="{{ route('staff.edit', $s->id_staff) }}" class="btn btn-warning btn-sm">Edit</a>

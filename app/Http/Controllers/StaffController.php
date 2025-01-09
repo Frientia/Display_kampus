@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-namespace App\Http\Controllers;
 use illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
@@ -26,7 +24,7 @@ class StaffController extends Controller
     {
         //validate form
         $request->validate([
-           
+
             'id_staff' => 'required',
             'nama_staff' => 'required',
             'jabatan' => 'required',
@@ -38,12 +36,12 @@ class StaffController extends Controller
             'nama_staff' => $request->nama_staff,
             'jabatan' => $request->jabatan,
             'no_telp' => $request->no_telp,
-         
+
         ]);
         return redirect()->route('staff.index')->with(['success' => 'Data berhasil disimpan!']);
     }
 
-    public function edit(string $id):View 
+    public function edit(string $id):View
     {
         $staff = Staff::find($id);
         return view('staff.edit', compact('staff'));
@@ -73,5 +71,5 @@ class StaffController extends Controller
         $staff->delete();
         return redirect()->route('staff.index')->with(['success' => 'Data berhasil dihapus']);
     }
-    
+
 }

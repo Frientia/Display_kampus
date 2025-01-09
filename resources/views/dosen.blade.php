@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Jadwal Dosen</title>
-    
+
     <!-- Menambahkan Font Awesome untuk ikon -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <!-- Menggunakan Google Fonts Poppins untuk font modern -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
+
     <style>
         /* Menambahkan font Poppins */
         body {
@@ -191,7 +191,7 @@
         <!-- Kolom Pencarian (Dropdown) -->
     </div>
 
-    <table id="staffTable">
+    <table id="dosenTable">
         <thead>
             <tr>
                 <th>No.</th>
@@ -202,8 +202,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="staff" data-jabatan="Keuangan">
+        @foreach($dosen as $d)
+            <tr class="dosen">
+                <td>{{ $loop->iteration }}</td>
+                <td>{{$d->nama_dosen}}</td>
+                <td>{{$d->email}}</td>
+                <td>{{$d->no_telp}}</td>
             </tr>
+            @endforeach
         </tbody>
     </table>
 
@@ -230,11 +236,11 @@
 
         // Fungsi untuk menampilkan tanggal dan hari saat ini
         function updateDate() {
-            const options = { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
             };
             const currentDate = new Date().toLocaleDateString('id-ID', options);
             document.getElementById('current-date').textContent = currentDate;
@@ -248,21 +254,6 @@
         // Menambahkan fungsionalitas tombol "Kembali"
         document.getElementById('backButton').addEventListener('click', function() {
             window.history.back(); // Kembali ke halaman sebelumnya
-        });
-
-        // Fungsi untuk menyaring data berdasarkan jabatan
-        document.getElementById('jabatanSelect').addEventListener('change', function() {
-            const selectedJabatan = this.value;
-            const staffRows = document.querySelectorAll('#staffTable .staff');
-            
-            staffRows.forEach(row => {
-                const jabatan = row.getAttribute('data-jabatan');
-                if (selectedJabatan === 'all' || jabatan === selectedJabatan) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
         });
     </script>
 </body>

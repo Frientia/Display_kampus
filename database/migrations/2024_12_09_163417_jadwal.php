@@ -9,7 +9,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jadwal', function (Blueprint $table) {
-            $table->string('id_jadwal', 10)->primary();
+            $table->bigIncrements('id_jadwal');
+            $table->string('hari');
             $table->date('tanggal');
             $table->time('jam_masuk');
             $table->time('jam_selesai');
@@ -17,7 +18,6 @@ return new class extends Migration
             $table->string('id_dosen', 10);
             $table->string('id_ruangan', 10);
             $table->string('id_kelas', 10);
-            
             $table->foreign('id_matkul')->references('id_matkul')->on('matkul')->onDelete('cascade');
             $table->foreign('id_dosen')->references('id_dosen')->on('dosen')->onDelete('cascade');
             $table->foreign('id_ruangan')->references('id_ruangan')->on('ruangan')->onDelete('cascade');

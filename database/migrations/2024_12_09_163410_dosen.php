@@ -13,8 +13,6 @@ return new class extends Migration
             $table->string('nama_dosen', 50);
             $table->text('email');
             $table->text('no_telp');
-            $table->string('id_matkul', 10);
-            $table->foreign('id_matkul')->references('id_matkul')->on('matkul')->onDelete('cascade');
             $table->timestamps();
         });
     }

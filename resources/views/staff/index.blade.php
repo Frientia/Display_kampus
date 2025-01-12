@@ -1,5 +1,17 @@
 @extends('layout.app')
 @section('content')
+@if(session('berhasil'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: '{{ session("berhasil") }}',
+            timer: 2000,
+            showConfirmButton: false
+        });
+    </script>
+@endif
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
 
@@ -63,7 +75,7 @@
 
                             <td class="d-flex gap-2">
                                 <a href="{{ route('staff.edit', $s->id_staff) }}" class="btn btn-warning btn-sm">Edit</a>
-                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('prodi.destroy', $s->id_staff) }}" method="POST" class="d-inline-block">
+                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('staff.destroy', $s->id_staff) }}" method="POST" class="d-inline-block">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
@@ -77,5 +89,25 @@
         </div> <!-- /.card -->
     </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Data ini akan dihapus!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + id).submit();
+                }
+            })
+        }
+    </script>
 </body>
 @endsection

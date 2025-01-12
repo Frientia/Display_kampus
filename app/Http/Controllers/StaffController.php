@@ -38,7 +38,7 @@ class StaffController extends Controller
             'no_telp' => $request->no_telp,
 
         ]);
-        return redirect()->route('staff.index')->with(['success' => 'Data berhasil disimpan!']);
+        return redirect()->route('staff.index')->with(['berhasil' => 'Data berhasil disimpan!']);
     }
 
     public function edit(string $id):View
@@ -62,14 +62,14 @@ class StaffController extends Controller
             'jabatan' => $request->jabatan,
             'no_telp' => $request->no_telp
         ]);
-        return redirect()->route('staff.index')->with(['success' => 'Data berhasil diupdate!!']);
+        return redirect()->route('staff.index')->with(['berhasil' => 'Data berhasil diupdate!!']);
     }
 
     public function destroy(string $id):RedirectResponse
     {
         $staff = staff::findOrFail($id);
         $staff->delete();
-        return redirect()->route('staff.index')->with(['success' => 'Data berhasil dihapus']);
+        return redirect()->route('staff.index')->with(['berhasil' => 'Data berhasil dihapus']);
     }
 
 }
